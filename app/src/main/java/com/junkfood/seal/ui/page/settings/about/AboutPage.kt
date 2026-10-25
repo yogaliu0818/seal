@@ -22,10 +22,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -50,8 +46,6 @@ import com.junkfood.seal.ui.component.BackButton
 import com.junkfood.seal.ui.component.ConfirmButton
 import com.junkfood.seal.ui.component.PreferenceItem
 import com.junkfood.seal.ui.component.PreferenceSwitchWithDivider
-import com.junkfood.seal.util.AUTO_UPDATE
-import com.junkfood.seal.util.PreferenceUtil
 import com.junkfood.seal.util.ToastUtil
 
 private const val releaseURL = "https://github.com/JunkFood02/Seal/releases"
@@ -83,8 +77,6 @@ fun AboutPage(
     //    val screenDensity = configuration.densityDpi / 160f
     //    val screenHeight = (configuration.screenHeightDp.toFloat() * screenDensity).roundToInt()
     //    val screenWidth = (configuration.screenWidthDp.toFloat() * screenDensity).roundToInt()
-    var isAutoUpdateEnabled by remember { mutableStateOf(PreferenceUtil.isAutoUpdateEnabled()) }
-
     val info = App.getVersionReport()
     val versionName = packageInfo.versionName
 
@@ -176,16 +168,11 @@ fun AboutPage(
                     PreferenceSwitchWithDivider(
                         title = stringResource(R.string.auto_update),
                         description = stringResource(R.string.check_for_updates_desc),
-                        icon =
-                            if (isAutoUpdateEnabled) Icons.Outlined.Update
-                            else Icons.Outlined.UpdateDisabled,
-                        isChecked = isAutoUpdateEnabled,
-                        isSwitchEnabled = !App.isFDroidBuild(),
+                        icon = Icons.Outlined.UpdateDisabled,
+                        isChecked = false,
+                        isSwitchEnabled = false,
                         onClick = onNavigateToUpdatePage,
-                        onChecked = {
-                            isAutoUpdateEnabled = !isAutoUpdateEnabled
-                            PreferenceUtil.updateValue(AUTO_UPDATE, isAutoUpdateEnabled)
-                        },
+                        onChecked = {},
                     )
                 }
                 item {

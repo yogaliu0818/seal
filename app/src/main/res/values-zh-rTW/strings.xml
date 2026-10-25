@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name" translatable="false">MediaNest</string>
     <string name="paste_msg">貼上 URL</string>
     <string name="extract_audio_summary">下載並儲存音訊，而非影片</string>
     <string name="yt_dlp_up_to_date">正在使用最新版本的 yt-dlp</string>
@@ -104,7 +105,7 @@
     <string name="subdirectory_desc">儲存檔案到以相應欄位命名的資料夾</string>
     <string name="permission_issue_desc">不支援 Download/ 和 Documents/ 以外的目錄</string>
     <string name="battery_configuration">電池配置</string>
-    <string name="service_title">Seal 正在下載…</string>
+    <string name="service_title">MediaNest 正在下載…</string>
     <string name="unknown_error">未知錯誤</string>
     <string name="translate">翻譯</string>
     <string name="translate_desc">在 Hosted Weblate 上協助翻譯此應用程式</string>
@@ -176,7 +177,7 @@
     <string name="aria2_desc">使用 aria2c 作為外部下載程式</string>
     <string name="cookies_desc">使用 Netscape 格式的 Cookies 檔案進行下載</string>
     <string name="clear_temp_files">清除暫存檔案</string>
-    <string name="check_for_updates_desc">自動檢查來自 GitHub 提供的更新</string>
+    <string name="check_for_updates_desc">應用程式更新由 Google Play 提供</string>
     <string name="clear_temp_files_info">暫存檔案可用於繼續已取消的下載。確定要刪除全數暫存檔案嗎？
 \n
 \n您可以在 %1$s 中存取上述檔案</string>
@@ -255,8 +256,8 @@
 \n
 \n此版本可能會有不穩定的情況發生，如在使用過程中有任何問題，請不要吝嗇於給予回饋，以協助我們改進應用程式。</string>
     <string name="update_channel">更新頻道</string>
-    <string name="auto_update">自動更新</string>
-    <string name="enable_auto_update">啟用自動更新</string>
+    <string name="auto_update">Google Play 更新</string>
+    <string name="enable_auto_update">更新由 Google Play 管理</string>
     <string name="apply">套用</string>
     <string name="clip_video">剪裁影片</string>
     <string name="clip_start">開始時間</string>
@@ -281,14 +282,14 @@
     <string name="sponsor_desc">透過在 GitHub 上贊助以支持此應用程式</string>
     <string name="feedback">意見反應</string>
     <string name="sponsors">贊助</string>
-    <string name="sponsor_msg">Seal 永遠提供眾人免費使用並開放原始碼。若您悅納，請考慮在 GitHub 上贊助我！</string>
+    <string name="sponsor_msg">MediaNest 基於自由與開放原始碼軟體。重新發布前，請先查看致謝與授權條款。</string>
     <string name="no_downloaded_media">沒有已下載的媒體</string>
     <string name="beta_features">Beta</string>
     <string name="enable_experimental_feature">確定要啟用實驗性功能？</string>
     <string name="clip_video_desc">在格式選取頁中剪裁影片</string>
     <string name="audio_format">音訊格式</string>
     <string name="clip_video_dialog_msg">使用此功能以將下載任務—— 選取的影片區段，委派予 FFmpeg。此功能仍在實驗性階段，剪裁並非完全精確且並非支援全部格式，下載速率可能較慢。</string>
-    <string name="auto_update_disabled_msg">自動更新不適用於 %1$s 組建。如果您的裝置尚未安裝 %1$s，或想要預覽 Seal 即將推出的新功能，請考慮使用 %2$s。</string>
+    <string name="auto_update_disabled_msg">MediaNest 的應用程式更新由 Google Play 提供。</string>
     <string name="switch_to_github_builds">切換至 GitHub 組建</string>
     <string name="okay">確定</string>
     <string name="got_it">瞭解</string>
@@ -336,9 +337,9 @@
     </plurals>
     <string name="ua_header">使用者代理程式標頭</string>
     <string name="export_to_file">匯出成檔案</string>
-    <string name="custom_command_usage_msg">yt-dlp 是功能強大的下載影片命令列工具。Seal 透過提供直觀的 GUI、常見命令的預設值和其他額外功能，讓您更輕鬆地使用 yt-dlp。
+    <string name="custom_command_usage_msg">yt-dlp 是功能強大的下載影片命令列工具。MediaNest 透過提供直觀的 GUI、常見命令的預設值和其他額外功能，讓您更輕鬆地使用 yt-dlp。
 \n
-\n如果您需要進階使用 yt-dlp，您可以在 Seal 中直接建立、儲存和執行自訂命令範本，就像在終端機一樣。
+\n如果您需要進階使用 yt-dlp，您可以在 MediaNest 中直接建立、儲存和執行自訂命令範本，就像在終端機一樣。
 \n
 \n當您使用自訂命令時，大部分 GUI 選項和功能將會停用。</string>
     <string name="presets">預設</string>

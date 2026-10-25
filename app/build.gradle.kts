@@ -26,7 +26,7 @@ val baseVersionName = currentVersion.name
 val currentVersionCode = currentVersion.code.toInt()
 
 android {
-    compileSdk = 35
+    compileSdk = 36
 
     if (keystorePropertiesFile.exists()) {
         val keystoreProperties = Properties()
@@ -44,9 +44,9 @@ android {
     buildFeatures { buildConfig = true }
 
     defaultConfig {
-        applicationId = "com.junkfood.seal"
+        applicationId = "com.medianest.app"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 200_000_150
         check(versionCode == currentVersionCode)
 
@@ -110,7 +110,8 @@ android {
             }
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
-            resValue("string", "app_name", "Seal Debug")
+            // The customized build stays installable beside the official app.
+            resValue("string", "app_name", "MediaNest")
         }
     }
 
@@ -125,7 +126,7 @@ android {
         create("githubPreview") {
             dimension = "publishChannel"
             applicationIdSuffix = ".preview"
-            resValue("string", "app_name", "Seal Preview")
+            resValue("string", "app_name", "MediaNest Preview")
         }
 
         create("fdroid") {
@@ -139,7 +140,7 @@ android {
     applicationVariants.all {
         outputs.all {
             (this as com.android.build.gradle.internal.api.BaseVariantOutputImpl).outputFileName =
-                "Seal-${defaultConfig.versionName}-${name}.apk"
+                "MediaNest-${defaultConfig.versionName}-${name}.apk"
         }
     }
 

@@ -44,7 +44,7 @@ import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
@@ -558,52 +558,61 @@ fun InputUrl(
     onValueChange: (String) -> Unit,
 ) {
     val softwareKeyboardController = LocalSoftwareKeyboardController.current
-    OutlinedTextField(
-        value = url,
-        isError = error,
-        onValueChange = onValueChange,
-        label = { Text(stringResource(R.string.video_url)) },
-        modifier = Modifier.padding(0f.dp, 16f.dp).fillMaxWidth(),
-        textStyle = MaterialTheme.typography.bodyLarge,
-        maxLines = 3,
-        trailingIcon = {
-            if (url.isNotEmpty()) ClearButton { onValueChange("") }
-            //            else PasteUrlButton { onPaste() }
-        },
-        keyboardActions = KeyboardActions(onDone = { onDone() }),
-        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
-    )
-    AnimatedVisibility(visible = showDownloadProgress) {
-        Row(Modifier.padding(0.dp, 12.dp), verticalAlignment = Alignment.CenterVertically) {
-            val progressAnimationValue by
-                animateFloatAsState(
-                    targetValue = progress / 100f,
-                    animationSpec = tween(durationMillis = 300, easing = FastOutSlowInEasing),
-                )
-            if (progressAnimationValue < 0)
-                LinearProgressIndicator(
-                    modifier = Modifier.weight(0.75f).clip(MaterialTheme.shapes.large)
-                )
-            else
-                LinearProgressIndicator(
-                    progress = { progressAnimationValue },
-                    modifier = Modifier.weight(0.75f).clip(MaterialTheme.shapes.large),
-                )
-            Text(
-                text = if (progress < 0) "0%" else "$progress%",
-                textAlign = TextAlign.Center,
-                modifier = Modifier.weight(0.25f),
+    Surface(
+        modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp),
+        shape = MaterialTheme.shapes.extraLarge,
+        color = MaterialTheme.colorScheme.surfaceContainerLow,
+        tonalElevation = 2.dp,
+    ) {
+        Column(Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
+            OutlinedTextField(
+                value = url,
+                isError = error,
+                onValueChange = onValueChange,
+                label = { Text(stringResource(R.string.video_url)) },
+                modifier = Modifier.fillMaxWidth(),
+                textStyle = MaterialTheme.typography.bodyLarge,
+                maxLines = 3,
+                trailingIcon = {
+                    if (url.isNotEmpty()) ClearButton { onValueChange("") }
+                },
+                keyboardActions = KeyboardActions(onDone = { onDone() }),
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
             )
-        }
-    }
-    Column(modifier = Modifier.fillMaxWidth()) {
-        AnimatedVisibility(visible = showCancelButton) {
-            OutlinedButtonWithIcon(
-                onClick = onCancel,
-                icon = Icons.Outlined.Cancel,
-                text = stringResource(id = R.string.cancel),
-                contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
+            AnimatedVisibility(visible = showDownloadProgress) {
+                Row(
+                    Modifier.padding(top = 12.dp, bottom = 4.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    val progressAnimationValue by
+                        animateFloatAsState(
+                            targetValue = progress / 100f,
+                            animationSpec = tween(durationMillis = 300, easing = FastOutSlowInEasing),
+                        )
+                    if (progressAnimationValue < 0)
+                        LinearProgressIndicator(
+                            modifier = Modifier.weight(0.75f).clip(MaterialTheme.shapes.large)
+                        )
+                    else
+                        LinearProgressIndicator(
+                            progress = { progressAnimationValue },
+                            modifier = Modifier.weight(0.75f).clip(MaterialTheme.shapes.large),
+                        )
+                    Text(
+                        text = if (progress < 0) "0%" else "$progress%",
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.weight(0.25f),
+                    )
+                }
+            }
+            AnimatedVisibility(visible = showCancelButton) {
+                OutlinedButtonWithIcon(
+                    onClick = onCancel,
+                    icon = Icons.Outlined.Cancel,
+                    text = stringResource(id = R.string.cancel),
+                    contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
         }
     }
 }
@@ -751,25 +760,31 @@ fun FABs(
     pasteCallback: () -> Unit = {},
 ) {
     Column(modifier = modifier.padding(6.dp), horizontalAlignment = Alignment.End) {
-        FloatingActionButton(
+        ExtendedFloatingActionButton(
             onClick = pasteCallback,
-            content = {
+            text = { Text(stringResource(R.string.paste)) },
+            icon = {
                 Icon(
                     Icons.Outlined.ContentPaste,
                     contentDescription = stringResource(R.string.paste),
                 )
             },
-            modifier = Modifier.padding(vertical = 12.dp),
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
+            contentColor = MaterialTheme.colorScheme.onSurface,
+            modifier = Modifier.padding(vertical = 6.dp),
         )
-        FloatingActionButton(
+        ExtendedFloatingActionButton(
             onClick = downloadCallback,
-            content = {
+            text = { Text(stringResource(R.string.download)) },
+            icon = {
                 Icon(
                     Icons.Outlined.FileDownload,
                     contentDescription = stringResource(R.string.download),
                 )
             },
-            modifier = Modifier.padding(vertical = 12.dp),
+            containerColor = MaterialTheme.colorScheme.primary,
+            contentColor = MaterialTheme.colorScheme.onPrimary,
+            modifier = Modifier.padding(vertical = 6.dp),
         )
     }
 }

@@ -178,7 +178,6 @@ fun AppEntry(dialogViewModel: DownloadDialogViewModel) {
                 )
             }
 
-            AppUpdater()
             YtdlpUpdater()
         }
     }
